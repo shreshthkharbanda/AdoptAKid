@@ -7,6 +7,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     int[] images = {R.drawable.face_icon, R.drawable.face_icon, R.drawable.face_icon, R.drawable.face_icon, R.drawable.face_icon, R.drawable.face_icon,R.drawable.face_icon, R.drawable.face_icon, R.drawable.face_icon, R.drawable.face_icon,R.drawable.face_icon};
@@ -38,6 +41,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
