@@ -10,19 +10,40 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomLvAdapter extends BaseAdapter{
 
     private Context context;
     private String[] names = null;
     private String[] ages = null;
     private Drawable[] images = null;
+    String[] allergies;
+    String[] bios;
+    String[] disabilities;
+    String[] genders;
+    String[] heights;
+    String[] weights;
+    String[] medicalHistories;
+    String[] races;
+    String[] shelter;
 
-    public CustomLvAdapter(Context context, String[] names, String[] secondaryInfo, Drawable[] images){
+    public CustomLvAdapter(Context context, String[] names, String[] secondaryInfo, Drawable[] images, String[]... args){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
         this.names = names;
         this.ages = secondaryInfo;
         this.images = images;
+        allergies = args[0];
+        bios = args[1];
+        disabilities = args[2];
+        genders = args[3];
+        heights = args[4];
+        weights = args[5];
+        medicalHistories = args[6];
+        races = args[7];
+        shelter = args[8];
     }
 
     @Override

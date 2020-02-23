@@ -1,5 +1,6 @@
 package com.skharbanda.adoptakid;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -38,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
     List<Drawable> images = new ArrayList<>();
     List<String> names = new ArrayList<>();
     List<String> ages = new ArrayList<>();
+    List<String> allergies = new ArrayList<>();
+    List<String> bios = new ArrayList<>();
+    List<String> disabilities = new ArrayList<>();
+    List<String> genders = new ArrayList<>();
+    List<String> heights = new ArrayList<>();
+    List<String> weights = new ArrayList<>();
+    List<String> medicalHistories = new ArrayList<>();
+    List<String> races = new ArrayList<>();
+    List<String> shelter = new ArrayList<>();
 
     ListView lView;
 
@@ -50,6 +62,53 @@ public class MainActivity extends AppCompatActivity {
 
         lView = findViewById(R.id.listview);
 
+        loadData();
+
+        lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Toast.makeText(MainActivity.this, names.get(i) + " " + ages.get(i), Toast.LENGTH_SHORT).show();
+//                String value="Hello world";
+                Intent intent = new Intent(MainActivity.this, KidInfoActivity.class);
+                intent.putExtra("key", new String[]{names.get(i), ages.get(i),
+                        allergies.get(i), bios.get(i), disabilities.get(i),
+                        genders.get(i), heights.get(i), weights.get(i),
+                        medicalHistories.get(i), races.get(i), shelter.get(i),
+                });
+                Bitmap bitmap = ((BitmapDrawable)images.get(i)).getBitmap();
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+//                bitmap = getResizedBitmap(bitmap, 10);
+                byte[] b = baos.toByteArray();
+                Log.v("Image", Arrays.toString(b));
+                intent.putExtra("picture", b);
+                startActivity(intent);
+            }
+        });
+    }
+    /**
+     * reduces the size of the image
+     * @param image
+     * @param maxSize
+     * @return
+     */
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
+    private void loadData() {
 
         // Access a Cloud Firestore instance from your Activity
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -68,8 +127,15 @@ public class MainActivity extends AppCompatActivity {
                                     String name = document.getString("name");
                                     String age = document.getString("age");
                                     String imageUrl = document.getString("image");
-                                    Toast.makeText(getApplicationContext(), "Name: " + name, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getApplicationContext(), "Age: " + age, Toast.LENGTH_SHORT).show();
+                                    String allergy = document.getString("allergies");
+                                    String bio = document.getString("bio");
+                                    String disability = document.getString("disabilities");
+                                    String gender = document.getString("gender");
+                                    String height = document.getString("height");
+                                    String weight = document.getString("weight");
+                                    String medicalHistory = document.getString("medical history");
+                                    String race = document.getString("race");
+                                    String kidShelter = document.getString("shelter");
 
                                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                                     StrictMode.setThreadPolicy(policy);
@@ -81,26 +147,29 @@ public class MainActivity extends AppCompatActivity {
                                     names.add(name);
                                     ages.add(age);
                                     images.add(d);
-                                    Toast.makeText(MainActivity.this, "Names 1 = " + names.toString(), Toast.LENGTH_SHORT).show();
+                                    allergies.add(allergy);
+                                    bios.add(bio);
+                                    disabilities.add(disability);
+                                    genders.add(gender);
+                                    heights.add(height);
+                                    weights.add(weight);
+                                    medicalHistories.add(medicalHistory);
+                                    races.add(race);
+                                    shelter.add(kidShelter);
 
-
-                                    String[] namesArr = new String[names.size()];
-                                    for (int i = 0; i < names.size(); i++) {
-                                        namesArr[i] = names.get(i);
-                                    }
-                                    String[] agesArr = new String[ages.size()];
-                                    for (int i = 0; i < ages.size(); i++) {
-                                        agesArr[i] = ages.get(i);
-                                    }
-                                    Drawable[] imagesArr = new Drawable[images.size()];
-                                    for (int i = 0; i < images.size(); i++) {
-                                        imagesArr[i] = images.get(i);
-                                    }
-
-                                    lAdapter = new CustomLvAdapter(MainActivity.this, namesArr, agesArr, imagesArr);
-                                    Toast.makeText(MainActivity.this, "Names 2= " + namesArr, Toast.LENGTH_LONG).show();
-                                    Toast.makeText(MainActivity.this, "Ages 2= " + agesArr, Toast.LENGTH_LONG).show();
-                                    Toast.makeText(MainActivity.this, "Images 2= " + imagesArr, Toast.LENGTH_LONG).show();
+                                    lAdapter = new CustomLvAdapter(MainActivity.this,
+                                            names.toArray(new String[names.size()]),
+                                            ages.toArray(new String[ages.size()]),
+                                            images.toArray(new Drawable[images.size()]),
+                                            allergies.toArray(new String[allergies.size()]),
+                                            bios.toArray(new String[bios.size()]),
+                                            disabilities.toArray(new String[disabilities.size()]),
+                                            genders.toArray(new String[genders.size()]),
+                                            heights.toArray(new String[heights.size()]),
+                                            weights.toArray(new String[weights.size()]),
+                                            medicalHistories.toArray(new String[medicalHistories.size()]),
+                                            races.toArray(new String[races.size()]),
+                                            shelter.toArray(new String[shelter.size()]));
 
                                     lView.setAdapter(lAdapter);
                                 } catch (Exception e) {
@@ -111,32 +180,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("QueryDocumentSnapshot", "Error getting documents: ", task.getException());
                         }
                     }
-                });/*
-        String[] namesArr = new String[names.size()];
-        for(int i = 0; i < names.size(); i++) {
-            namesArr[i] = names.get(i);
-        }
-        String[] agesArr = new String[ages.size()];
-        for(int i = 0; i < ages.size(); i++) {
-            agesArr[i] = ages.get(i);
-        }
-        Drawable[] imagesArr = new Drawable[images.size()];
-        for(int i = 0; i < images.size(); i++) {
-            imagesArr[i] = images.get(i);
-        }
-
-        lAdapter = new CustomLvAdapter(MainActivity.this, namesArr, agesArr, imagesArr);
-        Toast.makeText(MainActivity.this, "Names 2= " + namesArr, Toast.LENGTH_LONG).show();
-        Toast.makeText(MainActivity.this, "Ages 2= " + agesArr, Toast.LENGTH_LONG).show();
-        Toast.makeText(MainActivity.this, "Images 2= " + imagesArr, Toast.LENGTH_LONG).show();
-
-        lView.setAdapter(lAdapter);*/
-
-        lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, names.get(i) + " " + ages.get(i), Toast.LENGTH_SHORT).show();
-            }
-        });
+                });
     }
 }
