@@ -5,25 +5,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class ChildrenListAdapter extends BaseAdapter{
+public class CustomLvAdapter extends BaseAdapter{
 
     Context context;
     private String[] values = null;
     private String[] numbers = null;
     private int[] images = null;
 
-    public ChildrenListAdapter(Context context, String [] names, String [] ages, int [] images){
+    public CustomLvAdapter(Context context, String [] names, String [] secondaryInfo, int [] images){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
         this.values = names;
-        this.numbers = ages;
+        this.numbers = secondaryInfo;
         this.images = images;
     }
 
@@ -39,6 +36,7 @@ public class ChildrenListAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int i) {
+
         return i;
     }
 
@@ -68,7 +66,7 @@ public class ChildrenListAdapter extends BaseAdapter{
         }
 
         viewHolder.txtName.setText(values[position]);
-        viewHolder.txtVersion.setText("Version: "+numbers[position]);
+        viewHolder.txtVersion.setText("Age: "+numbers[position]);
         viewHolder.icon.setImageResource(images[position]);
 
         return convertView;
