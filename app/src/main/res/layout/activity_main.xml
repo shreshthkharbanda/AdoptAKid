@@ -24,8 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#bac3d4">
-        <!--android:gravity="center"-->
+        android:background="#bac3d4"
+        android:gravity="center">
 
         <Button
             android:id="@+id/footerButton"
