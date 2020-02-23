@@ -72,54 +72,28 @@ public class MainActivity extends AppCompatActivity {
 
         loadData();
 
-        lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        lView.setOnItemClickListener((adapterView, view, i, l) -> {
 //                Toast.makeText(MainActivity.this, names.get(i) + " " + ages.get(i), Toast.LENGTH_SHORT).show();
 //                String value="Hello world";
-                Intent intent = new Intent(MainActivity.this, KidInfoActivity.class);
-                intent.putExtra("key", new String[]{names.get(i), ages.get(i),
-                        allergies.get(i), bios.get(i), disabilities.get(i),
-                        genders.get(i), heights.get(i), weights.get(i),
-                        medicalHistories.get(i), races.get(i), shelter.get(i),
-                });
-                Bitmap bitmap = ((BitmapDrawable)images.get(i)).getBitmap();
+            Intent intent = new Intent(MainActivity.this, KidInfoActivity.class);
+            intent.putExtra("key", new String[]{names.get(i), ages.get(i),
+                    allergies.get(i), bios.get(i), disabilities.get(i),
+                    genders.get(i), heights.get(i), weights.get(i),
+                    medicalHistories.get(i), races.get(i), shelter.get(i),
+            });
+            Bitmap bitmap = ((BitmapDrawable)images.get(i)).getBitmap();
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
 //                bitmap = getResizedBitmap(bitmap, 10);
-                byte[] b = baos.toByteArray();
-                Log.v("Image", Arrays.toString(b));
-                intent.putExtra("picture", b);
-                startActivity(intent);
-            }
+            byte[] b = baos.toByteArray();
+            intent.putExtra("picture", b);
+            startActivity(intent);
         });
-        footerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ShelterViewActivity.class);
-            }
+        footerButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ShelterViewActivity.class);
+            startActivity(intent);
         });
-    }
-    /**
-     * reduces the size of the image
-     * @param image
-     * @param maxSize
-     * @return
-     */
-    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-        int width = image.getWidth();
-        int height = image.getHeight();
-
-        float bitmapRatio = (float)width / (float) height;
-        if (bitmapRatio > 1) {
-            width = maxSize;
-            height = (int) (width / bitmapRatio);
-        } else {
-            height = maxSize;
-            width = (int) (height * bitmapRatio);
-        }
-        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
     private void loadData() {
@@ -135,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                Log.d("QueryDocumentSnapshot", document.getId() + " => " + document.getData());
                                 URL url = null;
                                 try {
                                     String name = document.getString("name");

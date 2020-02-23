@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/basicinfocard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:drawable/dialog_holo_light_frame">
+
+        <ImageView
+            android:id="@+id/childLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="40dp"
+            tools:srcCompat="@tools:sample/avatars[2]" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/childLogo"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/childLogo"
+            android:text="Full Name"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            tools:visibility="visible"
+            android:capitalize="words"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/addressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameText"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/childLogo"
+            android:text="Address"
+            android:textColor="#000"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/shelterHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addressText"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/childLogo"
+            android:text="Hours"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            tools:visibility="visible"
+            android:capitalize="words"
+            android:textColor="#000"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/infoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/basicinfocard"
+        android:layout_above="@+id/shelterContact"
+        android:elevation="0dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:left="15dp">
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Description: "
+                android:textSize="20sp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/websiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/descriptionText"
+                android:text="Website: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/phoneNumberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/websiteText"
+                android:text="Phone Number: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/phoneNumberText"
+                android:text="Height: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/shelterContact"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="#bac3d4">
+
+        <Button
+            android:id="@+id/shelterContactText"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:elevation="50dp"
+            android:text="Request Shelter Contact"
+            android:textColor="#0b7bd6"
+            android:textSize="20sp"
+            app:backgroundTint="#ffffff" />
+
+    </RelativeLayout>
+</RelativeLayout>

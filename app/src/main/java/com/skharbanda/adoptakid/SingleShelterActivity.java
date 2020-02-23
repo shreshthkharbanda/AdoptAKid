@@ -2,58 +2,47 @@ package com.skharbanda.adoptakid;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.text.Html;
-import android.widget.Toast;
 
-public class KidInfoActivity extends AppCompatActivity {
+public class SingleShelterActivity extends AppCompatActivity {
+
 
     ImageView imageView;
     TextView nameText;
-    TextView ageText;
-    TextView shelterText;
-    TextView genderText;
-    TextView raceText;
-    TextView weightText;
-    TextView heightText;
-    TextView allergiesText;
-    TextView medicalHistory;
-    TextView disabilitiesText;
-    TextView bioText;
+    TextView addressText;
+    TextView hoursText;
+    TextView descriptionText;
+    TextView websiteText;
+    TextView phoneText;
+    TextView emailText;
     Button shelterContact;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kid_info);
+        setContentView(R.layout.activity_single_shelter);
 
         imageView = findViewById(R.id.childLogo);
         nameText = findViewById(R.id.nameText);
-        ageText = findViewById(R.id.ageText);
-        shelterText = findViewById(R.id.shelterText);
-        genderText = findViewById(R.id.genderText);
-        raceText = findViewById(R.id.raceText);
-        weightText = findViewById(R.id.weightText);
-        heightText = findViewById(R.id.heightText);
-        allergiesText = findViewById(R.id.allergiesText);
-        medicalHistory = findViewById(R.id.medHistoryText);
-        disabilitiesText = findViewById(R.id.disabilitiesText);
-        bioText = findViewById(R.id.bioText);
+        addressText = findViewById(R.id.addressText);
+        hoursText = findViewById(R.id.shelterHours);
+        descriptionText = findViewById(R.id.descriptionText);
+        websiteText = findViewById(R.id.websiteText);
+        phoneText = findViewById(R.id.phoneNumberText);
+        emailText = findViewById(R.id.emailText);
         shelterContact = findViewById(R.id.shelterContactText);
 
         Bundle extras = getIntent().getExtras();
@@ -67,19 +56,13 @@ public class KidInfoActivity extends AppCompatActivity {
                 imageView.setImageBitmap(bmp);
             }
 
-            if (values != null) {
-                nameText.setText(values[0]);
-            }
-            ageText.setText(values[1] +" years old");
-            shelterText.setText("Shelter: " + values[10]);
-            genderText.setText("Bio: " + values[3]);
-            raceText.setText("Disabilities: " + values[4]);
-            weightText.setText("Gender: " + values[5]);
-            heightText.setText("Height: " + values[6]);
-            allergiesText.setText("Weight: " + values[7]);
-            medicalHistory.setText("Medical History: " + values[8]);
-            disabilitiesText.setText("Race: " + values[9]);
-            bioText.setText("Allergies: " + values[2]);
+            nameText.setText(values[0]);
+            addressText.setText(values[1]);
+            hoursText.setText(values[2]);
+            descriptionText.setText(values[3]);
+            websiteText.setText(values[4]);
+            phoneText.setText(values[5]);
+            emailText.setText(values[6]);
         }
         // Define ActionBar object
         ActionBar actionBar;
