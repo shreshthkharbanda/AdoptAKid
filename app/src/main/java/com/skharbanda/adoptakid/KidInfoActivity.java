@@ -1,18 +1,25 @@
 package com.skharbanda.adoptakid;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.widget.Toast;
 
 public class KidInfoActivity extends AppCompatActivity {
 
@@ -28,13 +35,14 @@ public class KidInfoActivity extends AppCompatActivity {
     TextView medicalHistory;
     TextView disabilitiesText;
     TextView bioText;
+    Button shelterContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kid_info);
 
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.childLogo);
         nameText = findViewById(R.id.nameText);
         ageText = findViewById(R.id.ageText);
         shelterText = findViewById(R.id.shelterText);
@@ -46,6 +54,7 @@ public class KidInfoActivity extends AppCompatActivity {
         medicalHistory = findViewById(R.id.medHistoryText);
         disabilitiesText = findViewById(R.id.disabilitiesText);
         bioText = findViewById(R.id.bioText);
+        shelterContact = findViewById(R.id.shelterContactText);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -61,16 +70,16 @@ public class KidInfoActivity extends AppCompatActivity {
             if (values != null) {
                 nameText.setText(values[0]);
             }
-            ageText.setText(values[1]);
-            shelterText.setText(values[2]);
-            genderText.setText(values[3]);
-            raceText.setText(values[4]);
-            weightText.setText(values[5]);
-            heightText.setText(values[6]);
-            allergiesText.setText(values[7]);
-            medicalHistory.setText(values[8]);
-            disabilitiesText.setText(values[9]);
-            bioText.setText(values[10]);
+            ageText.setText(values[1] +" years old");
+            shelterText.setText("Shelter: " + values[10]);
+            genderText.setText("Bio: " + values[3]);
+            raceText.setText("Disabilities: " + values[4]);
+            weightText.setText("Gender: " + values[5]);
+            heightText.setText("Height: " + values[6]);
+            allergiesText.setText("Weight: " + values[7]);
+            medicalHistory.setText("Medical History: " + values[8]);
+            disabilitiesText.setText("Race: " + values[9]);
+            bioText.setText("Allergies: " + values[2]);
         }
         // Define ActionBar object
         ActionBar actionBar;
@@ -86,5 +95,13 @@ public class KidInfoActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
         getSupportActionBar().setElevation(200);
+
+        shelterContact.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

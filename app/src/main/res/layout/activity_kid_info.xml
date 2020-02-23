@@ -14,7 +14,7 @@
         android:background="@android:drawable/dialog_holo_light_frame">
 
         <ImageView
-            android:id="@+id/childlogo"
+            android:id="@+id/childLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
@@ -25,16 +25,15 @@
             android:id="@+id/nameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/childlogo"
+            android:layout_alignTop="@+id/childLogo"
             android:layout_marginLeft="20dp"
-            android:layout_toEndOf="@+id/childlogo"
+            android:layout_toEndOf="@+id/childLogo"
             android:text="Full Name"
             android:textColor="#000"
             android:textSize="20dp"
             android:textStyle="bold"
             tools:visibility="visible"
             android:capitalize="words"
-            android:textColor="#000"
             android:visibility="visible" />
 
         <TextView
@@ -44,7 +43,7 @@
             android:layout_below="@+id/nameText"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="7dp"
-            android:layout_toEndOf="@+id/childlogo"
+            android:layout_toEndOf="@+id/childLogo"
             android:text="Age"
             android:textColor="#000"
             android:textSize="20dp"
@@ -59,44 +58,14 @@
             android:layout_below="@+id/ageText"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="7dp"
-            android:layout_toEndOf="@+id/childlogo"
+            android:layout_toEndOf="@+id/childLogo"
             android:text="Shelter Name"
-            android:textColor="#000"
             android:textSize="20dp"
             android:textStyle="bold"
             android:visibility="visible"
             tools:visibility="visible"
             android:capitalize="words"
             android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/genderText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/shelterText"
-            android:text="Gender/Sex"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:capitalize="words"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/raceText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/genderText"
-            android:text="Race"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:capitalize="words"
-            android:textColor="#000"
-            tools:visibility="visible" />
     </RelativeLayout>
 
     <ScrollView
