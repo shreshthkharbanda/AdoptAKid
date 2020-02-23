@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "988129247459",
+    "firebase_url": "https://adoptakid-1.firebaseio.com",
+    "project_id": "adoptakid-1",
+    "storage_bucket": "adoptakid-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988129247459:android:169bc8edbf2811748cc5d6",
+        "android_client_info": {
+          "package_name": "com.skharbanda.adoptakid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988129247459-bc8g592bbm04j66mv2vi63ajur0uu6lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAORdJ5Yu7IDUPvlWYDhk7NWcO7DkkGg2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988129247459-bc8g592bbm04j66mv2vi63ajur0uu6lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
