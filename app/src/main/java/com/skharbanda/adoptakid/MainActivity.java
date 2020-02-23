@@ -60,12 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
     CustomLvAdapter lAdapter;
 
+    Button footerButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         lView = findViewById(R.id.listview);
+        footerButton = findViewById(R.id.footerButton);
 
         loadData();
 
@@ -89,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("Image", Arrays.toString(b));
                 intent.putExtra("picture", b);
                 startActivity(intent);
+            }
+        });
+        footerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ShelterViewActivity.class);
             }
         });
     }

@@ -4,6 +4,7 @@
     package="com.skharbanda.adoptakid">
 
     <dist:module dist:instant="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,8 +13,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ShelterViewActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShelterViewActivity" />
-        <activity android:name=".KidInfoActivity"
-            android:label="@string/app_name"/>
+        <activity
+            android:name=".KidInfoActivity"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
