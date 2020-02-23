@@ -2,6 +2,7 @@ package com.skharbanda.adoptakid;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,22 +12,22 @@ import android.widget.TextView;
 
 public class CustomLvAdapter extends BaseAdapter{
 
-    Context context;
-    private String[] values = null;
-    private String[] numbers = null;
-    private int[] images = null;
+    private Context context;
+    private String[] names = null;
+    private String[] ages = null;
+    private Drawable[] images = null;
 
-    public CustomLvAdapter(Context context, String [] names, String [] secondaryInfo, int [] images){
+    public CustomLvAdapter(Context context, String[] names, String[] secondaryInfo, Drawable[] images){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
-        this.values = names;
-        this.numbers = secondaryInfo;
+        this.names = names;
+        this.ages = secondaryInfo;
         this.images = images;
     }
 
     @Override
     public int getCount() {
-        return values.length;
+        return names.length;
     }
 
     @Override
@@ -36,20 +37,15 @@ public class CustomLvAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int i) {
-
         return i;
     }
 
     @Override
-    public View getView(int position, View convertView,ViewGroup parent) {
-
-
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-
         final View result;
 
         if (convertView == null) {
-
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.single_list_item, parent, false);
@@ -65,15 +61,14 @@ public class CustomLvAdapter extends BaseAdapter{
             result=convertView;
         }
 
-        viewHolder.txtName.setText(values[position]);
-        viewHolder.txtVersion.setText("Age: "+numbers[position]);
-        viewHolder.icon.setImageResource(images[position]);
+        viewHolder.txtName.setText(names[position]);
+        viewHolder.txtVersion.setText(String.format("Age: %s", ages[position]));
+        viewHolder.icon.setImageDrawable(images[position]);
 
         return convertView;
     }
 
     private static class ViewHolder {
-
         TextView txtName;
         TextView txtVersion;
         ImageView icon;

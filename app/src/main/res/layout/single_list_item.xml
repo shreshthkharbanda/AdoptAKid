@@ -8,7 +8,7 @@
         android:id="@+id/appIconIV"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/face_icon" />
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/aNametxt"
