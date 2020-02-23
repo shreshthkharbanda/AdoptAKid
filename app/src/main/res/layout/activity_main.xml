@@ -7,8 +7,6 @@
     tools:context=".MainActivity">
 
 
-
-
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
@@ -20,8 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#219bff"
-        android:gravity="center">
+        android:background="#bac3d4">
+        <!--android:gravity="center"-->
 
         <Button
             android:id="@+id/footerButton"
@@ -29,7 +27,26 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="View Shelters"
-            android:visibility="visible" />
+            android:textColor="#5080f2"
+            android:textSize="15sp"
+            app:backgroundTint="#ffffff"
+            app:elevation="30dp"
+            style="@style/Widget.MaterialComponents.Button.Icon"/>
+
+        <Button
+            android:id="@+id/footerButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="Test Render"
+            android:layout_alignParentRight="true"
+            android:textColor="#5080f2"
+            android:textSize="15sp"
+            app:backgroundTint="#ffffff"
+            app:elevation="30dp"
+            style="@style/Widget.MaterialComponents.Button.Icon"/>
+
+
     </RelativeLayout>
 
 </RelativeLayout>

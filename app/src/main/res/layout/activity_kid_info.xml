@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,176 +7,214 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/basicinfocard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="@android:drawable/dialog_holo_light_frame">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/childlogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="10dp"
-            tools:srcCompat="@tools:sample/avatars[2]"/>
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="40dp"
+            tools:srcCompat="@tools:sample/avatars[2]" />
 
         <TextView
             android:id="@+id/nameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/childlogo"
             android:layout_marginLeft="20dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_alignTop="@+id/imageView"
+            android:layout_toEndOf="@+id/childlogo"
             android:text="Full Name"
-            android:textSize="30dp"
-            android:visibility="visible"
+            android:textColor="#000"
+            android:textSize="20dp"
             android:textStyle="bold"
-            tools:visibility="visible"
-            android:textColor="#000"/>
+            android:visibility="visible"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/ageText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_toEndOf="@+id/imageView"
             android:layout_below="@+id/nameText"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/childlogo"
             android:text="Age"
-            android:textSize="30dp"
+            android:textColor="#000"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/shelterText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_toEndOf="@+id/imageView"
             android:layout_below="@+id/ageText"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="7dp"
+            android:layout_toEndOf="@+id/childlogo"
             android:text="Shelter Name"
-            android:textSize="30dp"
+            android:textColor="#000"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/genderText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/shelterText"
-            android:text="Gender/Sex"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/raceText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/genderText"
-            android:text="Race"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/weightText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/raceText"
-            android:text="Weight"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/heightText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/weightText"
-            android:text="Height"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/allergiesText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/heightText"
-            android:text="Allergies"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/medHistoryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/allergiesText"
-            android:text="Med. History"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-
-        <TextView
-            android:id="@+id/disabilitiesText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/medHistoryText"
-            android:text="Disabilities"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-        <TextView
-            android:id="@+id/bioText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/disabilitiesText"
-            android:text="[Bio]"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
-        <TextView
-            android:id="@+id/shelterContactText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/bioText"
-            android:layout_marginBottom="30dp"
-            android:text="Request Shelter Contact"
-            android:textSize="30dp"
-            android:visibility="visible"
-            tools:visibility="visible"
-            android:textColor="#000"/>
+            tools:visibility="visible" />
     </RelativeLayout>
-</ScrollView>
+
+    <ScrollView
+        android:id="@+id/infoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/basicinfocard"
+        android:layout_above="@+id/shelterContact"
+        android:elevation="0dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:left="15dp">
+
+            <TextView
+                android:id="@+id/genderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Gender/Sex: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/raceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/genderText"
+                android:text="Race: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/weightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/raceText"
+                android:text="Weight: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/heightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/weightText"
+                android:text="Height: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/allergiesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/heightText"
+                android:text="Allergies: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/medHistoryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/allergiesText"
+                android:text="Med. History: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+            <TextView
+                android:id="@+id/disabilitiesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/medHistoryText"
+                android:text="Disabilities: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+            <TextView
+                android:id="@+id/bioText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/disabilitiesText"
+                android:text="[Bio]: "
+                android:textSize="20dp"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:textColor="#000"
+                android:background="@drawable/custom_text_border"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/shelterContact"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="#bac3d4">
+
+        <Button
+            android:id="@+id/shelterContactText"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:elevation="50dp"
+            android:text="Request Shelter Contact"
+            android:textColor="#0b7bd6"
+            android:textSize="20sp"
+            app:backgroundTint="#ffffff" />
+
+    </RelativeLayout>
+</RelativeLayout>
