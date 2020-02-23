@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="10dp"
+            tools:srcCompat="@tools:sample/avatars[2]" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_marginTop="40dp"
+            android:text="Full Name"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/ageText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_below="@+id/nameText"
+            android:layout_marginTop="30dp"
+            android:text="Age"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/shelterText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_below="@+id/ageText"
+            android:layout_marginTop="30dp"
+            android:text="Shelter Name"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/genderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/shelterText"
+            android:text="Gender/Sex"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/raceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/genderText"
+            android:text="Race"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/weightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/raceText"
+            android:text="Weight"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/heightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/weightText"
+            android:text="Height"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/allergiesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/heightText"
+            android:text="Allergies"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/medHistoryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/allergiesText"
+            android:text="Med. History"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/disabilitiesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/medHistoryText"
+            android:text="Disabilities"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+        <TextView
+            android:id="@+id/bioText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/disabilitiesText"
+            android:text="[Bio]"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+        <TextView
+            android:id="@+id/shelterContactText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/bioText"
+            android:layout_marginBottom="30dp"
+            android:text="Request Shelter Contact"
+            android:textSize="30dp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+    </RelativeLayout>
+</ScrollView>
