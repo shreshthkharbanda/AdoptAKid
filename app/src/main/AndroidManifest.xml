@@ -21,8 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KidInfoActivity" />
         <activity android:name=".ShelterViewActivity" />
+        <activity android:name=".KidInfoActivity"
+            android:label="@string/app_name"/>
     </application>
 
 </manifest>
