@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     List<String> medicalHistories = new ArrayList<>();
     List<String> races = new ArrayList<>();
     List<String> shelter = new ArrayList<>();
+    List<String> emails = new ArrayList<>();
+    List<String> phones = new ArrayList<>();
 
     ListView lView;
 
@@ -73,13 +75,11 @@ public class MainActivity extends AppCompatActivity {
         loadData();
 
         lView.setOnItemClickListener((adapterView, view, i, l) -> {
-//                Toast.makeText(MainActivity.this, names.get(i) + " " + ages.get(i), Toast.LENGTH_SHORT).show();
-//                String value="Hello world";
             Intent intent = new Intent(MainActivity.this, KidInfoActivity.class);
             intent.putExtra("key", new String[]{names.get(i), ages.get(i),
                     allergies.get(i), bios.get(i), disabilities.get(i),
                     genders.get(i), heights.get(i), weights.get(i),
-                    medicalHistories.get(i), races.get(i), shelter.get(i),
+                    medicalHistories.get(i), races.get(i), shelter.get(i), emails.get(i), phones.get(i)
             });
             Bitmap bitmap = ((BitmapDrawable)images.get(i)).getBitmap();
 
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
                                     String medicalHistory = document.getString("medical history");
                                     String race = document.getString("race");
                                     String kidShelter = document.getString("shelter");
+                                    String email = document.getString("email");
+                                    String phone = document.getString("phone");
 
                                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                                     StrictMode.setThreadPolicy(policy);
@@ -143,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
                                     medicalHistories.add(medicalHistory);
                                     races.add(race);
                                     shelter.add(kidShelter);
+                                    emails.add(email);
+                                    phones.add(phone);
 
                                     lAdapter = new CustomLvAdapter(MainActivity.this,
                                             names.toArray(new String[names.size()]),

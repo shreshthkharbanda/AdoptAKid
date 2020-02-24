@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,6 +41,8 @@ public class KidInfoActivity extends AppCompatActivity {
     TextView disabilitiesText;
     TextView bioText;
     Button shelterContact;
+    String email = "";
+    String phone = "";
 
     final Context context = this;
 
@@ -75,7 +79,7 @@ public class KidInfoActivity extends AppCompatActivity {
             if (values != null) {
                 nameText.setText(values[0]);
             }
-            ageText.setText(values[1] +" years old");
+            ageText.setText(values[1] + " years old");
             shelterText.setText("Shelter: " + values[10]);
             genderText.setText("Bio: " + values[3]);
             raceText.setText("Disabilities: " + values[4]);
@@ -85,6 +89,8 @@ public class KidInfoActivity extends AppCompatActivity {
             medicalHistory.setText("Medical History: " + values[8]);
             disabilitiesText.setText("Race: " + values[9]);
             bioText.setText("Allergies: " + values[2]);
+            email = values[11];
+            phone = values[12];
         }
         // Define ActionBar object
         ActionBar actionBar;
@@ -101,26 +107,42 @@ public class KidInfoActivity extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
         getSupportActionBar().setElevation(200);
 
-        shelterContact.setOnClickListener(v -> {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                // custom dialog
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.contact_shelter_dialog);
-                dialog.setTitle("Title...");
+        shelterContact.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Contact Shelter");
+            builder.setIcon(R.drawable.logo);
+            builder.setMessage("How would you like to contact the shelter?");
+            builder.setPositiveButton("Call",
+                    (dialog, id) -> {
+                        Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+                        phoneIntent.setData(Uri.parse("tel:" + phone));
+                    });
 
-                Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-                // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
+            builder.setNeutralButton("Cancel",
+                    (dialog, id) -> dialog.cancel());
 
-                dialog.show();
-            }
+            builder.setNegativeButton("Email",
+                    (dialog, id) -> {
+                        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                        emailIntent.setType("text/plain");
+                        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{
+                                email
+                        });
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Adopt A Kid");
+                        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+
+                        emailIntent.setType("message/rfc822");
+
+                        try {
+                            startActivity(Intent.createChooser(emailIntent,
+                                    "Send email using..."));
+                        } catch (android.content.ActivityNotFoundException ex) {
+                            Toast.makeText(getApplicationContext(),
+                                    "No email clients installed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            builder.create().show();
         });
     }
 }

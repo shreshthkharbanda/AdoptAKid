@@ -70,16 +70,13 @@ public class CustomLvAdapter extends BaseAdapter{
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.single_list_item, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.aNametxt);
-            viewHolder.txtVersion = (TextView) convertView.findViewById(R.id.aVersiontxt);
-            viewHolder.icon = (ImageView) convertView.findViewById(R.id.appIconIV);
-
-            result=convertView;
+            viewHolder.txtName = convertView.findViewById(R.id.aNametxt);
+            viewHolder.txtVersion = convertView.findViewById(R.id.aVersiontxt);
+            viewHolder.icon = convertView.findViewById(R.id.appIconIV);
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
         }
 
         viewHolder.txtName.setText(names[position]);

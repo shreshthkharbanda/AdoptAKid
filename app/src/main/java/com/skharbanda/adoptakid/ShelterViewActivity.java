@@ -89,7 +89,7 @@ public class ShelterViewActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                            URL url = null;
+                            URL url;
                             try {
                                 String name = document.getString("name");
                                 String address = document.getString("address");
@@ -106,7 +106,6 @@ public class ShelterViewActivity extends AppCompatActivity {
                                 url = new URL(imageUrl);
                                 Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
                                 Drawable d = new BitmapDrawable(getResources(), bmp);
-
 
                                 names.add(name);
                                 addresses.add(address);

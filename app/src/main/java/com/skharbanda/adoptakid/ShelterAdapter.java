@@ -19,11 +19,11 @@ public class ShelterAdapter extends BaseAdapter {
     private String[] names = null;
     private String[] addresses = null;
     private Drawable[] images = null;
-    String[] descriptions;
-    String[] emails;
-    String[] hours;
-    String[] phones;
-    String[] websites;
+    private String[] descriptions;
+    private String[] emails;
+    private String[] hours;
+    private String[] phones;
+    private String[] websites;
 
     public ShelterAdapter(Context context, String[] names, String[] secondaryInfo, Drawable[] images, String[]... args){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
@@ -56,7 +56,6 @@ public class ShelterAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-        final View result;
 
         if (convertView == null) {
             viewHolder = new ViewHolder();
