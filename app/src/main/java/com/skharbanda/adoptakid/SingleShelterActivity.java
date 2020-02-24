@@ -40,6 +40,20 @@ public class SingleShelterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_shelter);
 
+        // Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        // Define ColorDrawable object and parse color
+        // using parseColor method
+        // with color hash code as its parameter
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#05386B"));
+
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
+
         imageView = findViewById(R.id.childLogo);
         nameText = findViewById(R.id.nameText);
         addressText = findViewById(R.id.addressText);
@@ -69,20 +83,6 @@ public class SingleShelterActivity extends AppCompatActivity {
             phoneText.setText(values[5]);
             emailText.setText(values[6]);
         }
-        // Define ActionBar object
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-
-        // Define ColorDrawable object and parse color
-        // using parseColor method
-        // with color hash code as its parameter
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#bac3d4"));
-
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
-        getSupportActionBar().setElevation(200);
 
         shelterContact.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

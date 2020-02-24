@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#5CDB95"
     tools:context="com.skharbanda.adoptakid.MainActivity">
 
 
@@ -14,17 +15,17 @@
         android:layout_above="@+id/footer"
         android:scrollbarSize="3dp"
         android:scrollbarStyle="outsideOverlay"
+        android:divider="#5CDB95"
         android:scrollbars="vertical"
         android:scrollingCache="true"
         android:smoothScrollbar="true" />
-
 
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#bac3d4"
+        android:background="#05386B"
         android:gravity="center">
 
         <Button
@@ -33,9 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="View Shelters"
-            android:textColor="#5080f2"
+            android:textColor="#05386B"
             android:textSize="15sp"
-            app:backgroundTint="#ffffff"
+            app:backgroundTint="#F0FFFF"
             app:elevation="30dp"
             android:layout_centerHorizontal="true"
             style="@style/Widget.MaterialComponents.Button.Icon"/>
