@@ -2,26 +2,23 @@ package com.skharbanda.adoptakid;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +37,7 @@ import java.util.Objects;
 public class ShelterViewActivity extends AppCompatActivity {
 
     List<Drawable> images = new ArrayList<>();
+    List<String> imageUrls = new ArrayList<>();
     List<String> names = new ArrayList<>();
     List<String> addresses = new ArrayList<>();
     List<String> descriptions = new ArrayList<>();
@@ -53,35 +51,23 @@ public class ShelterViewActivity extends AppCompatActivity {
     ShelterAdapter lAdapter;
 
     Button footerButton;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_view);
 
-        // Define ActionBar object
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-
-        // Define ColorDrawable object and parse color
-        // using parseColor method
-        // with color hash code as its parameter
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#05386B"));
-
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
-
         lView = findViewById(R.id.listview);
         footerButton = findViewById(R.id.footerButton);
+        progressBar = findViewById(R.id.shelterProgress);
 
         loadData();
 
         lView.setOnItemClickListener((adapterView, view, i, l) -> {
             Intent intent = new Intent(ShelterViewActivity.this, SingleShelterActivity.class);
             intent.putExtra("key", new String[]{names.get(i), addresses.get(i), hours.get(i),
-                    descriptions.get(i), emails.get(i), phones.get(i), websites.get(i)
+                    descriptions.get(i), emails.get(i), phones.get(i), websites.get(i), imageUrls.get(i)
             });
             Bitmap bitmap = ((BitmapDrawable) images.get(i)).getBitmap();
 
@@ -89,7 +75,7 @@ public class ShelterViewActivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
 //                bitmap = getResizedBitmap(bitmap, 10);
             byte[] b = baos.toByteArray();
-            intent.putExtra("picture", b);
+//            intent.putExtra("picture", b);
             startActivity(intent);
         });
         footerButton.setOnClickListener(v -> {
@@ -127,6 +113,7 @@ public class ShelterViewActivity extends AppCompatActivity {
 
                                 names.add(name);
                                 addresses.add(address);
+                                imageUrls.add(String.valueOf(url));
                                 images.add(d);
                                 descriptions.add(description);
                                 emails.add(email);
@@ -145,6 +132,7 @@ public class ShelterViewActivity extends AppCompatActivity {
                                         websites.toArray(new String[websites.size()]));
 
                                 lView.setAdapter(lAdapter);
+                                progressBar.setVisibility(View.GONE);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

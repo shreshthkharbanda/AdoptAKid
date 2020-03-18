@@ -1,22 +1,33 @@
 package com.skharbanda.adoptakid;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.Html;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.text.Html;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class KidInfoActivity extends AppCompatActivity {
 
@@ -61,12 +72,12 @@ public class KidInfoActivity extends AppCompatActivity {
         if (extras != null) {
             String[] values = extras.getStringArray("key");
             //The key argument here must match that used in the other activity
-            byte[] b = extras.getByteArray("picture");
-            Bitmap bmp = null;
-            if (b != null) {
-                bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
-                imageView.setImageBitmap(bmp);
-            }
+//            byte[] b = extras.getByteArray("picture");
+//            Bitmap bmp = null;
+//            if (b != null) {
+//                bmp = BitmapFactory.decodeByteArray(b, 0, b.length);
+//                imageView.setImageBitmap(bmp);
+//            }
 
             if (values != null) {
                 nameText.setText(values[0]);
@@ -83,6 +94,12 @@ public class KidInfoActivity extends AppCompatActivity {
             bioText.setText("Allergies: " + values[2]);
             email = values[11];
             phone = values[12];
+            try {
+                Bitmap bmp = BitmapFactory.decodeStream(new URL(values[13]).openConnection().getInputStream());
+                imageView.setImageBitmap(bmp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         // Define ActionBar object
         ActionBar actionBar;
@@ -92,47 +109,30 @@ public class KidInfoActivity extends AppCompatActivity {
         // using parseColor method
         // with color hash code as its parameter
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#05386B"));
+                = new ColorDrawable(Color.parseColor("#bac3d4"));
 
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
+        getSupportActionBar().setElevation(200);
 
         shelterContact.setOnClickListener(view -> {
+            shelterContact.setClickable(false);
+            shelterContact.setActivated(false);
+            shelterContact.setAlpha(0.5f);
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Contact Shelter");
+            builder.setTitle("Show Interest in " + nameText.getText().toString());
             builder.setIcon(R.drawable.logo);
-            builder.setMessage("How would you like to contact the shelter?");
-            builder.setPositiveButton("Call",
-                    (dialog, id) -> {
-                        Intent phoneIntent = new Intent(Intent.ACTION_CALL);
-                        phoneIntent.setData(Uri.parse("tel:" + phone));
-                    });
+            builder.setMessage("Would you like to tell the shelter you are interested?");
 
-            builder.setNeutralButton("Cancel",
+            builder.setNeutralButton("No",
                     (dialog, id) -> dialog.cancel());
 
-            builder.setNegativeButton("Email",
+            builder.setNegativeButton("Yes",
                     (dialog, id) -> {
-                        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                        emailIntent.setType("text/plain");
-                        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{
-                                email
-                        });
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Adopt A Kid");
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
-
-                        emailIntent.setType("message/rfc822");
-
-                        try {
-                            startActivity(Intent.createChooser(emailIntent,
-                                    "Send email using..."));
-                        } catch (android.content.ActivityNotFoundException ex) {
-                            Toast.makeText(getApplicationContext(),
-                                    "No email clients installed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(context, "The shelter has received an update!", Toast.LENGTH_SHORT).show();
                     });
+            builder.setCancelable(false);
             builder.create().show();
         });
     }

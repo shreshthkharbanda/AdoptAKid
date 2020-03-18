@@ -14,7 +14,9 @@
         android:minHeight="50dp"
         android:minWidth="50dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:progressTint="#05386B"
+        android:backgroundTint="#fff"/>
 
     <ListView
         android:id="@+id/listview"

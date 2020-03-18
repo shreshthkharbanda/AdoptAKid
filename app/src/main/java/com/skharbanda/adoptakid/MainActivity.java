@@ -16,12 +16,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,6 +46,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     List<Drawable> images = new ArrayList<>();
+    List<String> imageUrls = new ArrayList<>();
     List<String> names = new ArrayList<>();
     List<String> ages = new ArrayList<>();
     List<String> allergies = new ArrayList<>();
@@ -62,37 +66,27 @@ public class MainActivity extends AppCompatActivity {
     CustomLvAdapter lAdapter;
 
     Button footerButton;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Define ActionBar object
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-
-        // Define ColorDrawable object and parse color
-        // using parseColor method
-        // with color hash code as its parameter
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#05386B"));
-
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
-
         lView = findViewById(R.id.listview);
         footerButton = findViewById(R.id.footerButton);
+        progressBar = findViewById(R.id.progress_bar);
 
         loadData();
+//        progressBar.setProgress(0);
 
         lView.setOnItemClickListener((adapterView, view, i, l) -> {
             Intent intent = new Intent(MainActivity.this, KidInfoActivity.class);
             intent.putExtra("key", new String[]{names.get(i), ages.get(i),
                     allergies.get(i), bios.get(i), disabilities.get(i),
                     genders.get(i), heights.get(i), weights.get(i),
-                    medicalHistories.get(i), races.get(i), shelter.get(i), emails.get(i), phones.get(i)
+                    medicalHistories.get(i), races.get(i), shelter.get(i), emails.get(i), phones.get(i), imageUrls.get(i)
             });
             Bitmap bitmap = ((BitmapDrawable)images.get(i)).getBitmap();
 
@@ -100,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
 //                bitmap = getResizedBitmap(bitmap, 10);
             byte[] b = baos.toByteArray();
-            intent.putExtra("picture", b);
+//            intent.putExtra("picture", b);
             startActivity(intent);
         });
         footerButton.setOnClickListener(v -> {
@@ -116,73 +110,71 @@ public class MainActivity extends AppCompatActivity {
 
         db.collection("kids")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                URL url = null;
-                                try {
-                                    String name = document.getString("name");
-                                    String age = document.getString("age");
-                                    String imageUrl = document.getString("image");
-                                    String allergy = document.getString("allergies");
-                                    String bio = document.getString("bio");
-                                    String disability = document.getString("disabilities");
-                                    String gender = document.getString("gender");
-                                    String height = document.getString("height");
-                                    String weight = document.getString("weight");
-                                    String medicalHistory = document.getString("medical history");
-                                    String race = document.getString("race");
-                                    String kidShelter = document.getString("shelter");
-                                    String email = document.getString("email");
-                                    String phone = document.getString("phone");
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                            URL url = null;
+                            try {
+                                String name = document.getString("name");
+                                String age = document.getString("age");
+                                String imageUrl = document.getString("image");
+                                String allergy = document.getString("allergies");
+                                String bio = document.getString("bio");
+                                String disability = document.getString("disabilities");
+                                String gender = document.getString("gender");
+                                String height = document.getString("height");
+                                String weight = document.getString("weight");
+                                String medicalHistory = document.getString("medical history");
+                                String race = document.getString("race");
+                                String kidShelter = document.getString("shelter");
+                                String email = document.getString("email");
+                                String phone = document.getString("phone");
 
-                                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-                                    StrictMode.setThreadPolicy(policy);
+                                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                                StrictMode.setThreadPolicy(policy);
 
-                                    url = new URL(imageUrl);
-                                    Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                                    Drawable d = new BitmapDrawable(getResources(), bmp);
+                                url = new URL(imageUrl);
+                                Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                                Drawable d = new BitmapDrawable(getResources(), bmp);
 
-                                    names.add(name);
-                                    ages.add(age);
-                                    images.add(d);
-                                    allergies.add(allergy);
-                                    bios.add(bio);
-                                    disabilities.add(disability);
-                                    genders.add(gender);
-                                    heights.add(height);
-                                    weights.add(weight);
-                                    medicalHistories.add(medicalHistory);
-                                    races.add(race);
-                                    shelter.add(kidShelter);
-                                    emails.add(email);
-                                    phones.add(phone);
+                                names.add(name);
+                                ages.add(age);
+                                images.add(d);
+                                imageUrls.add(String.valueOf(url));
+                                allergies.add(allergy);
+                                bios.add(bio);
+                                disabilities.add(disability);
+                                genders.add(gender);
+                                heights.add(height);
+                                weights.add(weight);
+                                medicalHistories.add(medicalHistory);
+                                races.add(race);
+                                shelter.add(kidShelter);
+                                emails.add(email);
+                                phones.add(phone);
 
-                                    lAdapter = new CustomLvAdapter(MainActivity.this,
-                                            names.toArray(new String[names.size()]),
-                                            ages.toArray(new String[ages.size()]),
-                                            images.toArray(new Drawable[images.size()]),
-                                            allergies.toArray(new String[allergies.size()]),
-                                            bios.toArray(new String[bios.size()]),
-                                            disabilities.toArray(new String[disabilities.size()]),
-                                            genders.toArray(new String[genders.size()]),
-                                            heights.toArray(new String[heights.size()]),
-                                            weights.toArray(new String[weights.size()]),
-                                            medicalHistories.toArray(new String[medicalHistories.size()]),
-                                            races.toArray(new String[races.size()]),
-                                            shelter.toArray(new String[shelter.size()]));
+                                lAdapter = new CustomLvAdapter(MainActivity.this,
+                                        names.toArray(new String[names.size()]),
+                                        ages.toArray(new String[ages.size()]),
+                                        images.toArray(new Drawable[images.size()]),
+                                        allergies.toArray(new String[allergies.size()]),
+                                        bios.toArray(new String[bios.size()]),
+                                        disabilities.toArray(new String[disabilities.size()]),
+                                        genders.toArray(new String[genders.size()]),
+                                        heights.toArray(new String[heights.size()]),
+                                        weights.toArray(new String[weights.size()]),
+                                        medicalHistories.toArray(new String[medicalHistories.size()]),
+                                        races.toArray(new String[races.size()]),
+                                        shelter.toArray(new String[shelter.size()]));
 
-                                    lView.setAdapter(lAdapter);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                                lView.setAdapter(lAdapter);
+                                progressBar.setVisibility(View.GONE);
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        } else {
-                            Log.d("QueryDocumentSnapshot", "Error getting documents: ", task.getException());
                         }
+                    } else {
+                        Log.d("QueryDocumentSnapshot", "Error getting documents: ", task.getException());
                     }
                 });
     }

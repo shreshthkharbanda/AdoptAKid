@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="23dp"
+            android:adjustViewBounds="true"
             tools:srcCompat="@tools:sample/avatars[2]" />
 
         <TextView
@@ -217,7 +218,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
             android:elevation="50dp"
-            android:text="Request Shelter Contact"
+            android:text="I'm Interested"
             android:textColor="#05386B"
             android:textSize="18sp"
             app:backgroundTint="#F0FFFF" />
