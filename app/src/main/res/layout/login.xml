@@ -8,34 +8,17 @@
     android:background="#5CDB95">
 
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="275dp"
+        android:layout_width="435dp"
+        android:layout_height="268dp"
+        android:background="@drawable/custom_text_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/custom_text_border">
-
-        <Button
-            android:id="@+id/loginBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="131dp"
-            android:layout_marginEnd="131dp"
-            android:layout_marginBottom="30dp"
-            android:textSize="12sp"
-            android:textColor="#05386B"
-            app:backgroundTint="#F0FFFF"
-            style="@style/Widget.MaterialComponents.Button.Icon"
-            android:text="Login" />
+        app:layout_constraintVertical_bias="0.286">
 
         <EditText
             android:id="@+id/loginPwd"
-            android:hint="Password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -44,23 +27,54 @@
             android:layout_marginStart="68.5dp"
             android:layout_marginEnd="68.5dp"
             android:layout_marginBottom="86dp"
+            android:background="@drawable/custom_text_border"
             android:ems="10"
-            android:inputType="textPassword"
-            android:background="@drawable/custom_text_border"/>
+            android:hint="Password"
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/loginUserName"
-            android:hint="Username"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/loginPwd"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="68.5dp"
-            android:layout_marginEnd="68.5dp"
+            android:layout_marginEnd="69dp"
             android:layout_marginBottom="17dp"
+            android:background="@drawable/custom_text_border"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:background="@drawable/custom_text_border"/>
+            android:hint="Username"
+            android:inputType="textPersonName" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/loginBtn"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="289dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="61dp"
+        android:text="Login"
+        android:textColor="#F0FFFF"
+        android:textSize="12sp"
+        app:backgroundTint="#05386B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="455dp" />
+
+    <Button
+        android:id="@+id/signUpBtn"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="289dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="61dp"
+        android:text="Don't have an account yet? Sign up!"
+        android:textColor="@color/textColor"
+        android:textSize="12sp"
+        app:backgroundTint="#05386B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="543dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
