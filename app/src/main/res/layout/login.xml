@@ -10,15 +10,13 @@
         android:id="@+id/loginBtn"
         android:layout_width="175dp"
         android:layout_height="51dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginBottom="276dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/custom_text_border"
         android:text="Login"
         android:textColor="#F0FFFF"
         android:textSize="15sp"
         app:backgroundTint="#05386B"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guestBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -26,21 +24,21 @@
         android:id="@+id/guestBtn"
         android:layout_width="175dp"
         android:layout_height="51dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/custom_text_border"
         android:text="Continue as Guest"
         android:textColor="@color/textColor"
         android:textSize="12sp"
         app:backgroundTint="#05386B"
+        app:layout_constraintBottom_toTopOf="@+id/signUpBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/signUpBtn"
         android:layout_width="175dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/custom_text_border"
         android:text="Don't have an account yet? Sign up!"
         android:textColor="@color/textColor"
@@ -48,15 +46,13 @@
         app:backgroundTint="#05386B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guestBtn"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/loginPwd"
         android:layout_width="261dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/custom_text_border"
         android:ems="10"
         android:hint="Password"
