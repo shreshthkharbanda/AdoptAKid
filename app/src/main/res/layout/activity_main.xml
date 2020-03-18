@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.skharbanda.adoptakid.MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <ListView
         android:id="@+id/listview"
@@ -39,8 +47,6 @@
             app:elevation="30dp"
             android:layout_centerHorizontal="true"
             style="@style/Widget.MaterialComponents.Button.Icon"/>
-
-
     </RelativeLayout>
 
 </RelativeLayout>
