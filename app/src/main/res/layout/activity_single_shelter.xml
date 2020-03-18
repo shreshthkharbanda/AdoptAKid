@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/basicinfocard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:orientation="vertical"
         android:background="@android:drawable/dialog_holo_light_frame">
 
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="23dp"
             tools:srcCompat="@tools:sample/avatars[2]" />
 
         <TextView
@@ -72,7 +72,8 @@
         android:id="@+id/infoview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_below="@+id/basicinfocard"
         android:layout_above="@+id/shelterContact"
         android:elevation="0dp">
@@ -147,7 +148,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="#bac3d4">
+        android:background="#05386B">
 
         <Button
             android:id="@+id/shelterContactText"
@@ -158,9 +159,9 @@
             android:layout_marginTop="10dp"
             android:elevation="50dp"
             android:text="Request Shelter Contact"
-            android:textColor="#0b7bd6"
-            android:textSize="20sp"
-            app:backgroundTint="#ffffff" />
+            android:textColor="#05386B"
+            android:textSize="18sp"
+            app:backgroundTint="#F0FFFF"/>
 
     </RelativeLayout>
 </RelativeLayout>

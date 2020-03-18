@@ -17,18 +17,17 @@
         android:textSize="20sp"
         android:text="Call" />
 
+
     <Button
         android:id="@+id/dialogButtonEmail"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dialogButtonPhone"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:text="Email" />
-
+        android:text="Email"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/dialogButtonCancel"

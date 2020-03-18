@@ -1,30 +1,22 @@
 package com.skharbanda.adoptakid;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.text.Html;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.text.Html;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class KidInfoActivity extends AppCompatActivity {
 
@@ -100,12 +92,11 @@ public class KidInfoActivity extends AppCompatActivity {
         // using parseColor method
         // with color hash code as its parameter
         ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#bac3d4"));
+                = new ColorDrawable(Color.parseColor("#05386B"));
 
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(Html.fromHtml("<font color='#ffffff'>AdoptAKid </font>"));
-        getSupportActionBar().setElevation(200);
 
         shelterContact.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
