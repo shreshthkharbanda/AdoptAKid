@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="23dp"
             tools:srcCompat="@tools:sample/avatars[2]" />
 
         <TextView
@@ -26,11 +26,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/childLogo"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="16dp"
             android:layout_toEndOf="@+id/childLogo"
             android:text="Full Name"
             android:textColor="#000"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             tools:visibility="visible"
             android:capitalize="words"
@@ -41,12 +41,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameText"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="7dp"
             android:layout_toEndOf="@+id/childLogo"
             android:text="Age"
             android:textColor="#000"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:visibility="visible"
             tools:visibility="visible" />
@@ -56,15 +56,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ageText"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="7dp"
             android:layout_toEndOf="@+id/childLogo"
             android:text="Shelter Name"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:visibility="visible"
             tools:visibility="visible"
-            android:capitalize="words"
             android:textColor="#000"/>
     </RelativeLayout>
 
@@ -72,7 +71,8 @@
         android:id="@+id/infoview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_below="@+id/basicinfocard"
         android:layout_above="@+id/shelterContact"
         android:elevation="0dp">
@@ -87,7 +87,6 @@
                 android:id="@+id/genderText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
                 android:text="Gender/Sex: "
@@ -102,7 +101,6 @@
                 android:id="@+id/raceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/genderText"
@@ -118,7 +116,6 @@
                 android:id="@+id/weightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/raceText"
@@ -133,7 +130,6 @@
                 android:id="@+id/heightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/weightText"
@@ -148,7 +144,6 @@
                 android:id="@+id/allergiesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/heightText"
@@ -164,7 +159,6 @@
                 android:id="@+id/medHistoryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/allergiesText"
@@ -179,7 +173,6 @@
                 android:id="@+id/disabilitiesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/medHistoryText"
@@ -193,7 +186,6 @@
                 android:id="@+id/bioText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/disabilitiesText"
@@ -215,7 +207,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="#bac3d4">
+        android:background="#05386B">
 
         <Button
             android:id="@+id/shelterContactText"
@@ -226,9 +218,9 @@
             android:layout_marginTop="10dp"
             android:elevation="50dp"
             android:text="Request Shelter Contact"
-            android:textColor="#0b7bd6"
-            android:textSize="20sp"
-            app:backgroundTint="#ffffff" />
+            android:textColor="#05386B"
+            android:textSize="18sp"
+            app:backgroundTint="#F0FFFF" />
 
     </RelativeLayout>
 </RelativeLayout>
